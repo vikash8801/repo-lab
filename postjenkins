@@ -8,7 +8,7 @@ echo 'Hello World'
 }
 }
 post {
-success {
+failure {
 echo 'I will always say Hello again!'
 }
 }
