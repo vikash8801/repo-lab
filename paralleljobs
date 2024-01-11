@@ -1,7 +1,6 @@
-JENKINS PARALLEL JOBS
+JENKNS PARALLEL JOBS
 —————-
-parallel example
-—————-
+parallel example————-
 pipeline {
     agent any
     stages {
@@ -87,4 +86,3 @@ error ‘simulating error happened on Stage2’
             }
         }
     }
-}
