@@ -1,0 +1,35 @@
+pipeline {
+agent any
+
+stages {
+stage('Checkout') {
+steps {
+// Checkout your Git repository
+checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:
+'https://github.com/amitopenwriteup/repojenkins.git']])
+}
+}
+
+stage('Install npm') {
+steps {
+// Install Newman globally
+sh 'sudo apt-get install -y npm'
+}
+}
+
+stage('Install Newman') {
+steps {
+// Install specific versions of Newman and Commander
+sh 'sudo npm install -g newman@5.2.3' // Replace with the actual version
+sh 'sudo npm install -g commander@2.20.0' // Replace with the actual version
+}
+}
+
+stage('Run Postman Collection') {
+steps {
+// Run your Postman collection using Newman
+sh 'sudo newman run collections.json'
+}
+}
+}
+}
